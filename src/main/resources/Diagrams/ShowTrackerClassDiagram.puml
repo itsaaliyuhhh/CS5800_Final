@@ -1,0 +1,115 @@
+@startuml
+
+title Class Diagram for ShowTracker App
+
+class User {
+  - username: String
+  - email: String
+  - password: String
+  + authenticate(): boolean
+  + updateProfile(): void
+}
+
+class Show {
+  - title: String
+  - genre: String
+  - releaseDate: Date
+  + addEpisode(Episode): void
+  + getEpisodes(): List<Episode>
+}
+
+class Episode {
+  - episodeNumber: int
+  - title: String
+  - duration: int
+  - isWatched: boolean
+  + markAsWatched(): void
+}
+
+class Note {
+  - content: String
+  - timestamp: Date
+  + editNote(): void
+}
+
+class Watchlist {
+  - shows: List<Show>
+  + addShow(Show): void
+  + removeShow(Show): void
+  + getShows(): List<Show>
+}
+
+abstract class ContentFactory {
+  + createContent(): Object
+}
+
+class ShowFactory extends ContentFactory {
+  + createContent(): Show
+}
+
+class EpisodeFactory extends ContentFactory {
+  + createContent(): Episode
+}
+
+class NoteFactory extends ContentFactory {
+  + createContent(): Note
+}
+
+interface WatchableContent {
+  + getTitle(): String
+}
+
+Show ..|> WatchableContent
+Episode ..|> WatchableContent
+
+interface Observer {
+  + update(): void
+}
+
+class WatchlistView implements Observer {
+  + update(): void
+}
+
+class StatisticsView implements Observer {
+  + update(): void
+}
+
+class ShowTrackerApp {
+  - observers: List<Observer>
+  + addObserver(Observer): void
+  + removeObserver(Observer): void
+  + notifyObservers(): void
+}
+
+ShowTrackerApp --> Observer
+Observer <|-- WatchlistView
+Observer <|-- StatisticsView
+
+interface ActionCommand {
+  + execute(): void
+}
+
+class AddShowCommand implements ActionCommand {
+  + execute(): void
+}
+
+class WriteNoteCommand implements ActionCommand {
+  + execute(): void
+}
+
+class MarkEpisodeWatchedCommand implements ActionCommand {
+  + execute(): void
+}
+
+class ActionInvoker {
+  - command: ActionCommand
+  + setCommand(ActionCommand): void
+  + invoke(): void
+}
+
+ActionInvoker --> ActionCommand
+ActionCommand <|-- AddShowCommand
+ActionCommand <|-- WriteNoteCommand
+ActionCommand <|-- MarkEpisodeWatchedCommand
+
+@enduml

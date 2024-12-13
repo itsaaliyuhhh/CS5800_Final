@@ -1,0 +1,13 @@
+@startuml
+title Track Episode Progress
+start
+
+:User navigates to watchlist;
+:User selects a show;
+:App displays episode list;
+:User marks episode as watched;
+:App updates watch progress;
+:Display confirmation;
+
+stop
+@enduml

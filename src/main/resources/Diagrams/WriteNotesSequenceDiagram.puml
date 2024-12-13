@@ -1,0 +1,15 @@
+@startuml
+title Write Notes About a Show or Episode
+
+actor User
+participant "ShowTracker App" as App
+participant "Database" as DB
+
+User -> App: Select a show or episode
+App -> DB: Fetch details of the selected content
+DB --> App: Return content details
+User -> App: Write and save a note
+App -> DB: Store note linked to content
+DB --> App: Confirm note saved
+App --> User: Display confirmation
+@enduml

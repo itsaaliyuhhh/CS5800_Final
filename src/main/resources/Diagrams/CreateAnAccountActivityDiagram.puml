@@ -1,0 +1,18 @@
+@startuml
+title Create an Account
+start
+
+:User selects "Sign Up" option;
+:App displays registration form;
+:User enters username, email, and password;
+:App validates input;
+
+if (Valid input?) then (Yes)
+  :Create new user account;
+  :Display success message;
+else (No)
+  :Display error message;
+endif
+
+stop
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+title Write Notes
+start
+
+:User selects a show or episode;
+:App displays details;
+:User selects "Add Note" option;
+:User writes and saves a note;
+:App stores note linked to content;
+:Display confirmation;
+
+stop
+@enduml

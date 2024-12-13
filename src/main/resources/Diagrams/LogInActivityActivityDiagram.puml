@@ -1,0 +1,18 @@
+@startuml
+title Log In
+start
+
+:User selects "Log In" option;
+:App displays login form;
+:User enters email and password;
+:App verifies credentials;
+
+if (Credentials valid?) then (Yes)
+  :Log in user;
+  :Display dashboard;
+else (No)
+  :Display error message;
+endif
+
+stop
+@enduml

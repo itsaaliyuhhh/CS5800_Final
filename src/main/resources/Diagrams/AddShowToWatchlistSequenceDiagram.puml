@@ -1,0 +1,16 @@
+@startuml
+title Add a Show to Watchlist
+
+actor User
+participant "ShowTracker App" as App
+participant "External API" as API
+participant "Database" as DB
+
+User -> App: Search for a show
+App -> API: Fetch show details
+API --> App: Return search results
+User -> App: Select a show
+App -> DB: Add show to user's watchlist
+DB --> App: Confirm addition
+App --> User: Display success message
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+title Add a Show to Watchlist
+start
+
+:User selects "Search Show" option;
+:User enters show title;
+:App searches external API for show;
+
+if (Show found?) then (Yes)
+  :Display search results;
+  :User selects a show;
+  :Add show to user's watchlist;
+else (No)
+  :Display "Show not found" message;
+endif
+
+stop
+@enduml
